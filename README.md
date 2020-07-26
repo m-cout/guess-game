@@ -1,2 +1,3 @@
 # hello-world
-Another repository
+
+Hi there! Aspiring coder here. Learning Python.
