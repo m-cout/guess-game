@@ -38,7 +38,7 @@ def jogo():
                     print(f"Tentativas restantes: {chances}!" )
 
                 else:
-                    print("O que foi isso? Eu disse números entre 1 e 20!")
+                    print("Como você chegou aqui? Digite um número de 1 a 20.")
             else:
                 print("Você tem que digitar um número!")
         else:
