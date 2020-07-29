@@ -1,8 +1,9 @@
-# jogo que desafia o jogador a descobrir o número secreto.
+# a game that challenges the player to guess a secret number.
 
 import random
 from sys import exit
 
+# asks in which language the player wants to play
 def init_lang():
     print("Choose language / Escolha o idioma")
     print("1 - English")
@@ -10,42 +11,55 @@ def init_lang():
     while True:
         lang = input('> ')
         if "1" in lang:
-            guess_en()
+            name_en()
         elif "2" in lang:
-            guess_pt()
+            name_pt()
         else:
             print("Type 1 for English / Digite 2 para Português")
 
-def play_again_pt():
+# gets user name (portuguese)
+def name_pt():
+    print("Qual o seu nome?")
+    nome = input('> ')
+    guess_pt(nome)
+
+# gets user name (english)
+def name_en():
+    print("What's your name?")
+    nome = input('> ')
+    guess_en(nome)
+
+# asks if the player wants to play again, restart the game if positive, exit if negative (portuguese)
+def play_again_pt(nome):
     print("Quer jogar novamente?")
     while True:
         play = input('> ')
         if "sim" in play.lower():
-            guess_pt()
+            guess_pt(nome)
         elif "não" in play.lower():
-            print("Até breve!")
+            print("Obrigado por jogar! Até breve!")
             exit(0)
         else:
             print("Sim ou Não?")
 
-def play_again_en():
+# asks if the player wants to play again, restart the game if positive, exit if negative (english)
+def play_again_en(nome):
     print("Wanna play again?")
     while True:
         play = input('> ')
         if "yes" in play.lower():
-            guess_en()
+            guess_en(nome)
         elif "no" in play.lower():
-            print("See you soon!")
+            print("Thanks for playing! See you soon!")
             exit(0)
         else:
             print("Yes or No?")
 
-def guess_pt():
+# this is the main structure of the game (portuguese)
+def guess_pt(nome):
     numero_secreto = random.randrange(1, 21)
 #   print(numero_secreto)
     chances = 3
-    print("Qual o seu nome?")
-    nome = input('> ')
     print(f"Olá, {nome}! Este é um jogo simples de adivinhação. Acabo de pensar em um número entre 1 e 20.")
     print("Vamos ver se você consegue adivinhar que número é esse?")
     print("Você tem 3 chances.")
@@ -61,7 +75,8 @@ def guess_pt():
                     print("twitter.com/marcvs")
                     print("mvcoutob@gmail.com")
                     print("github.com/m-cout")
-                    play_again_pt()
+                    print("")
+                    play_again_pt(nome)
                 elif (chute < 1) or (chute > 20):
                     print("Eu disse número entre 1 e 20, apenas!")
                 elif chute < numero_secreto:
@@ -86,14 +101,14 @@ def guess_pt():
             print("twitter.com/marcvs")
             print("mvcoutob@gmail.com")
             print("github.com/m-cout")
-            play_again_pt()
+            print("")
+            play_again_pt(nome)
 
-def guess_en():
+# this is the main structure of the game (english)
+def guess_en(nome):
     numero_secreto = random.randrange(1, 21)
 #   print(numero_secreto)
     chances = 3
-    print("What's your name?")
-    nome = input('> ')
     print(f"Welcome, {nome}! This is a simple guess game. I've just thought of a number between 1 and 20.")
     print("Let's see if you can guess the number?")
     print("You've got 3 chances.")
@@ -109,7 +124,8 @@ def guess_en():
                     print("twitter.com/marcvs")
                     print("mvcoutob@gmail.com")
                     print("github.com/m-cout")
-                    play_again_en()
+                    print("")
+                    play_again_en(nome)
                 elif (chute < 1) or (chute > 20):
                     print("I said number between 1 and 20 only!")
                 elif chute < numero_secreto:
@@ -134,6 +150,7 @@ def guess_en():
             print("twitter.com/marcvs")
             print("mvcoutob@gmail.com")
             print("github.com/m-cout")
-            play_again_en()
+            print("")
+            play_again_en(nome)
 
 init_lang()
